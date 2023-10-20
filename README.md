@@ -1,3 +1,4 @@
-# OCRScanner
+# Readify
 
+OCR Scanner
 
