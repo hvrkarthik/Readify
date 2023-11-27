@@ -1,35 +1,26 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
-import React, {useState} from 'react';
-import type {Node} from 'react';
+import Clipboard from '@react-native-clipboard/clipboard';
+import type { Node } from 'react';
+import React, { useState } from 'react';
 import {
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
   Dimensions,
   Modal,
   ScrollView,
-  ToastAndroid,
   Share,
+  StatusBar,
+  StyleSheet,
+  Text,
+  ToastAndroid,
+  TouchableOpacity,
+  View,
 } from 'react-native';
-import Clipboard from '@react-native-clipboard/clipboard';
-import {RNCamera} from 'react-native-camera';
+import { RNCamera } from 'react-native-camera';
 import Icon from 'react-native-vector-icons/Entypo';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 let cameraRef;
 const {width} = Dimensions.get('window');
-// const offset = width / 20;
 
 const App: () => Node = () => {
   const [blocks, seteBlocks] = useState([]);
@@ -69,10 +60,6 @@ const App: () => Node = () => {
           buttonPositive: 'Ok',
           buttonNegative: 'Cancel',
         }}
-        // onGoogleVisionBarcodesDetected={({barcodes}) => {
-        //   console.log(barcodes);
-        // }}
-        // onFacesDetected={faces => console.log(faces)}
         onTextRecognized={({textBlocks}) => {
           if (!modal) {
             seteBlocks(textBlocks);
@@ -90,7 +77,7 @@ const App: () => Node = () => {
             key={index.toString()}
             style={{
               position: 'absolute',
-              left: block.bounds.origin.x,// - offset,
+              left: block.bounds.origin.x,
               top: block.bounds.origin.y,
               width: block.bounds.size.width * 1.2,
               height: block.bounds.size.height * 0.9,
